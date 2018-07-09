@@ -12,9 +12,12 @@ namespace MessageApp
 {
     public partial class ClientMain : Form
     {
+        private string ip, user;
+
         public ClientMain()
         {
             InitializeComponent();
+            Console.WriteLine("Connected to " + ip + " as " + user);
         }
     }
 }

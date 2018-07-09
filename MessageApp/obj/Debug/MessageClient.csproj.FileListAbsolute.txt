@@ -7,3 +7,4 @@ C:\Users\Mihnea Visoiu\source\repos\MessageApp\MessageApp\obj\Debug\MessageClien
 C:\Users\Mihnea Visoiu\source\repos\MessageApp\MessageApp\obj\Debug\MessageClient.csproj.CoreCompileInputs.cache
 C:\Users\Mihnea Visoiu\source\repos\MessageApp\MessageApp\obj\Debug\MessageApp.exe
 C:\Users\Mihnea Visoiu\source\repos\MessageApp\MessageApp\obj\Debug\MessageApp.pdb
+C:\Users\Mihnea Visoiu\source\repos\MessageApp\MessageApp\obj\Debug\MessageApp.ClientLogin.resources
