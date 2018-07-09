@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Reflection;
+using System.Data.SqlClient;
 
 namespace MessageServer
 {
@@ -46,6 +47,19 @@ namespace MessageServer
         private void fileSystemWatcherMessages_Created(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine("Received message file.");
+            System.Threading.Thread.Sleep(30);
+            string fileContents = System.IO.File.ReadAllText(new FileInfo(e.FullPath).Name);
+            string query = "INSERT INTO [dbo].[Table]([TimeStamp], [Sender], [Receiver], [Message]) Values('" +
+                            DateTime.Now + "', " + fileContents + ")";
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.messageDbConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            this.tableTableAdapter.Fill(this.messageDbDataSet1.Table);
         }
     }
 }

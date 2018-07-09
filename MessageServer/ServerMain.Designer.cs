@@ -40,11 +40,11 @@
             this.tableTableAdapter = new MessageServer.messageDbDataSet1TableAdapters.TableTableAdapter();
             this.tableAdapterManager = new MessageServer.messageDbDataSet1TableAdapters.TableAdapterManager();
             this.tableDataGridView = new System.Windows.Forms.DataGridView();
+            this.fileSystemWatcherMessages = new System.IO.FileSystemWatcher();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileSystemWatcherMessages = new System.IO.FileSystemWatcher();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSetBindingSource)).BeginInit();
@@ -136,34 +136,6 @@
             this.tableDataGridView.Size = new System.Drawing.Size(806, 425);
             this.tableDataGridView.TabIndex = 1;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TimeStamp";
-            this.dataGridViewTextBoxColumn1.HeaderText = "TimeStamp";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Sender";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Sender";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Receiver";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Receiver";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Message";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Message";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
             // fileSystemWatcherMessages
             // 
             this.fileSystemWatcherMessages.EnableRaisingEvents = true;
@@ -172,6 +144,42 @@
             this.fileSystemWatcherMessages.Path = "C:\\";
             this.fileSystemWatcherMessages.SynchronizingObject = this;
             this.fileSystemWatcherMessages.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcherMessages_Created);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TimeStamp";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Timestamp";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 83;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Sender";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Sender";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 66;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Receiver";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Receiver";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 75;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Message";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Message";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 75;
             // 
             // ServerMain
             // 
@@ -210,11 +218,11 @@
         private System.Windows.Forms.ToolStripLabel labelIP;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.DataGridView tableDataGridView;
+        private System.IO.FileSystemWatcher fileSystemWatcherMessages;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.IO.FileSystemWatcher fileSystemWatcherMessages;
     }
 }
 
