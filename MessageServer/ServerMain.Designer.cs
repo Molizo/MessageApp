@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.labelIP = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.messageDbDataSet = new MessageServer.messageDbDataSet();
             this.messageDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.messageDbDataSet1 = new MessageServer.messageDbDataSet1();
@@ -39,17 +42,16 @@
             this.tableDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.labelIP = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileSystemWatcherMessages = new System.IO.FileSystemWatcher();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcherMessages)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -65,6 +67,23 @@
             this.toolStrip1.Size = new System.Drawing.Size(806, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(111, 22);
+            this.toolStripLabel1.Text = "Current IP Address: ";
+            // 
+            // labelIP
+            // 
+            this.labelIP.Name = "labelIP";
+            this.labelIP.Size = new System.Drawing.Size(62, 22);
+            this.labelIP.Text = "DUMMYIP";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // messageDbDataSet
             // 
@@ -100,19 +119,20 @@
             // 
             this.tableDataGridView.AllowUserToAddRows = false;
             this.tableDataGridView.AllowUserToDeleteRows = false;
-            this.tableDataGridView.AllowUserToResizeColumns = false;
             this.tableDataGridView.AllowUserToResizeRows = false;
             this.tableDataGridView.AutoGenerateColumns = false;
             this.tableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn3});
             this.tableDataGridView.DataSource = this.tableBindingSource;
             this.tableDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableDataGridView.Location = new System.Drawing.Point(0, 25);
             this.tableDataGridView.Name = "tableDataGridView";
+            this.tableDataGridView.ReadOnly = true;
+            this.tableDataGridView.RowHeadersVisible = false;
             this.tableDataGridView.Size = new System.Drawing.Size(806, 425);
             this.tableDataGridView.TabIndex = 1;
             // 
@@ -121,41 +141,37 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "TimeStamp";
             this.dataGridViewTextBoxColumn1.HeaderText = "TimeStamp";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Sender";
             this.dataGridViewTextBoxColumn2.HeaderText = "Sender";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Message";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Message";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Receiver";
             this.dataGridViewTextBoxColumn4.HeaderText = "Receiver";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // toolStripLabel1
+            // dataGridViewTextBoxColumn3
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(111, 22);
-            this.toolStripLabel1.Text = "Current IP Address: ";
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Message";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Message";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // labelIP
+            // fileSystemWatcherMessages
             // 
-            this.labelIP.Name = "labelIP";
-            this.labelIP.Size = new System.Drawing.Size(62, 22);
-            this.labelIP.Text = "DUMMYIP";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.fileSystemWatcherMessages.EnableRaisingEvents = true;
+            this.fileSystemWatcherMessages.Filter = "*.msgdat*";
+            this.fileSystemWatcherMessages.NotifyFilter = System.IO.NotifyFilters.FileName;
+            this.fileSystemWatcherMessages.Path = "C:\\";
+            this.fileSystemWatcherMessages.SynchronizingObject = this;
+            this.fileSystemWatcherMessages.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcherMessages_Created);
             // 
             // ServerMain
             // 
@@ -175,6 +191,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcherMessages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,8 +212,9 @@
         private System.Windows.Forms.DataGridView tableDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.IO.FileSystemWatcher fileSystemWatcherMessages;
     }
 }
 

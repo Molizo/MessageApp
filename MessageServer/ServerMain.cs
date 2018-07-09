@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.IO;
+using System.Reflection;
 
 namespace MessageServer
 {
@@ -17,6 +19,7 @@ namespace MessageServer
         public ServerMain()
         {
             InitializeComponent();
+            fileSystemWatcherMessages.Path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             labelIP.Text = LocalIPAddress().ToString();
         }
 
@@ -38,6 +41,11 @@ namespace MessageServer
             return host
                 .AddressList
                 .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
+        }
+
+        private void fileSystemWatcherMessages_Created(object sender, FileSystemEventArgs e)
+        {
+            Console.WriteLine("Received message file.");
         }
     }
 }
