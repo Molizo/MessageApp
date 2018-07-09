@@ -47,10 +47,12 @@ namespace MessageServer
         private void fileSystemWatcherMessages_Created(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine("Received message file.");
-            System.Threading.Thread.Sleep(30);
+            System.Threading.Thread.Sleep(15);
             string fileContents = System.IO.File.ReadAllText(new FileInfo(e.FullPath).Name);
-            string query = "INSERT INTO [dbo].[Table]([TimeStamp], [Sender], [Receiver], [Message]) Values('" +
-                            DateTime.Now + "', " + fileContents + ")";
+            System.Threading.Thread.Sleep(15);
+            System.IO.File.Delete(new FileInfo(e.FullPath).Name);
+            string query = "INSERT INTO [dbo].[Table]([ID],[TimeStamp], [Sender], [Receiver], [Message]) Values('" +
+                            Properties.Settings.Default.CurrentID + "', '" + DateTime.Now + "', " + fileContents + ")";
             using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.messageDbConnectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -60,6 +62,7 @@ namespace MessageServer
                 }
             }
             this.tableTableAdapter.Fill(this.messageDbDataSet1.Table);
+            Properties.Settings.Default.CurrentID++;
         }
     }
 }

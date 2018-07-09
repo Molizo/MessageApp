@@ -133,6 +133,7 @@
             this.tableDataGridView.Name = "tableDataGridView";
             this.tableDataGridView.ReadOnly = true;
             this.tableDataGridView.RowHeadersVisible = false;
+            this.tableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tableDataGridView.Size = new System.Drawing.Size(806, 425);
             this.tableDataGridView.TabIndex = 1;
             // 
