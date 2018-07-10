@@ -10,16 +10,19 @@ namespace MessageApp
         public ClientLogin()
         {
             InitializeComponent();
+            textBoxIP.Text = Properties.Settings.Default.lastIP;
+            textBoxUsername.Text = Properties.Settings.Default.lastUsername;
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             if (IsMachineOnline(textBoxIP.Text) && CheckLogin(textBoxUsername.Text, textBoxPassword.Text))
             {
-                this.Hide();
+                Properties.Settings.Default.lastIP = textBoxIP.Text;
+                Properties.Settings.Default.lastUsername = textBoxUsername.Text;
+                Properties.Settings.Default.Save();
                 var clientMain = new ClientMain();
-                System.IO.File.WriteAllText(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().CodeBase.ToString()), textBoxIP.Text + "\n" + textBoxUsername.Text);
-                System.Threading.Thread.Sleep(15);
+                this.Hide();
                 clientMain.Closed += (s, args) => this.Close();
                 clientMain.Show();
             }
