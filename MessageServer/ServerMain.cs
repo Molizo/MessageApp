@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
-using System.IO;
-using System.Reflection;
-using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace MessageServer
 {
@@ -47,9 +40,9 @@ namespace MessageServer
         private void fileSystemWatcherMessages_Created(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine("Received message file.");
-            System.Threading.Thread.Sleep(15);
+            System.Threading.Thread.Sleep(300);
             string fileContents = System.IO.File.ReadAllText(new FileInfo(e.FullPath).Name);
-            System.Threading.Thread.Sleep(15);
+            System.Threading.Thread.Sleep(30);
             System.IO.File.Delete(new FileInfo(e.FullPath).Name);
             string query = "INSERT INTO [dbo].[Table]([ID],[TimeStamp], [Sender], [Receiver], [Message]) Values('" +
                             Properties.Settings.Default.CurrentID + "', '" + DateTime.Now + "', " + fileContents + ")";

@@ -45,14 +45,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientLogin.Designer.cs">
+      <DependentUpon>ClientLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientMain.Designer.cs">
       <DependentUpon>ClientMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientNewMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientNewMessage.Designer.cs">
+      <DependentUpon>ClientNewMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ClientLogin.resx">
+      <DependentUpon>ClientLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientMain.resx">
+      <DependentUpon>ClientMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientNewMessage.resx">
+      <DependentUpon>ClientNewMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,6 +82,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
