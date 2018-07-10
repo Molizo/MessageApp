@@ -69,6 +69,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>messageDbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="messageDbDataSet1.cs">
+      <DependentUpon>messageDbDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="messageDbDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -154,4 +157,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
