@@ -32,9 +32,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.labelConnectionStatus = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.buttonNewMessage = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.labelNewMessageNumber = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonNewMessage = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,17 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // labelNewMessageNumber
+            // 
+            this.labelNewMessageNumber.Name = "labelNewMessageNumber";
+            this.labelNewMessageNumber.Size = new System.Drawing.Size(144, 22);
+            this.labelNewMessageNumber.Text = "You have X new messages";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // buttonNewMessage
             // 
             this.buttonNewMessage.BackColor = System.Drawing.SystemColors.ButtonFace;
@@ -76,17 +87,6 @@
             this.buttonNewMessage.Text = "Compose";
             this.buttonNewMessage.ToolTipText = "Send a new message";
             this.buttonNewMessage.Click += new System.EventHandler(this.buttonNewMessage_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // labelNewMessageNumber
-            // 
-            this.labelNewMessageNumber.Name = "labelNewMessageNumber";
-            this.labelNewMessageNumber.Size = new System.Drawing.Size(144, 22);
-            this.labelNewMessageNumber.Text = "You have X new messages";
             // 
             // ClientMain
             // 

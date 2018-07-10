@@ -63,7 +63,6 @@
     <Compile Include="ClientNewMessage.Designer.cs">
       <DependentUpon>ClientNewMessage.cs</DependentUpon>
     </Compile>
-    <Compile Include="FTPClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ClientLogin.resx">
