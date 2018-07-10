@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace MessageApp
 {
@@ -22,7 +14,7 @@ namespace MessageApp
         {
             Random random = new Random();
             string fileName = "./Messages/newMessage" + Properties.Settings.Default.lastUsername + random.Next(0, 21999999) + ".msgdat";
-            string message = "'" + Properties.Settings.Default.lastUsername + "','" + textBoxTo.Text + "','" + textBoxMessage.Text + "'";
+            string message = "'" + Properties.Settings.Default.lastUsername + "','" + textBoxTo.Text + "','" + textBoxMessage.Text.Replace(',', ' ') + "'";
             System.IO.File.WriteAllText(fileName, message);
             System.Threading.Thread.Sleep(30);
             uploadFile(fileName);

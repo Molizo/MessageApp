@@ -40,7 +40,7 @@ namespace MessageServer
         private void fileSystemWatcherMessages_Created(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine("Received message file.");
-            System.Threading.Thread.Sleep(30);
+            System.Threading.Thread.Sleep(300);
             string fileContents = System.IO.File.ReadAllText(new FileInfo(e.FullPath).Name);
             System.Threading.Thread.Sleep(30);
             System.IO.File.Delete(new FileInfo(e.FullPath).Name);
