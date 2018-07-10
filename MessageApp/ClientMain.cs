@@ -25,6 +25,8 @@ namespace MessageApp
 
         private void buttonNewMessage_Click(object sender, EventArgs e)
         {
+            ClientNewMessage clientNewMessage = new ClientNewMessage();
+            clientNewMessage.ShowDialog();
         }
     }
 }
