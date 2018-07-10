@@ -46,5 +46,14 @@ namespace MessageApp.Properties {
                 this["lastIP"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public int refreshInterval {
+            get {
+                return ((int)(this["refreshInterval"]));
+            }
+        }
     }
 }
