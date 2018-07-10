@@ -32,7 +32,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.labelIP = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.messageDbDataSet = new MessageServer.messageDbDataSet();
             this.messageDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.messageDbDataSet1 = new MessageServer.messageDbDataSet1();
@@ -40,11 +39,11 @@
             this.tableTableAdapter = new MessageServer.messageDbDataSet1TableAdapters.TableTableAdapter();
             this.tableAdapterManager = new MessageServer.messageDbDataSet1TableAdapters.TableAdapterManager();
             this.tableDataGridView = new System.Windows.Forms.DataGridView();
-            this.fileSystemWatcherMessages = new System.IO.FileSystemWatcher();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileSystemWatcherMessages = new System.IO.FileSystemWatcher();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSetBindingSource)).BeginInit();
@@ -56,14 +55,13 @@
             // 
             // toolStrip1
             // 
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.labelIP,
-            this.toolStripSeparator1});
+            this.labelIP});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(806, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -79,11 +77,6 @@
             this.labelIP.Name = "labelIP";
             this.labelIP.Size = new System.Drawing.Size(62, 22);
             this.labelIP.Text = "DUMMYIP";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // messageDbDataSet
             // 
@@ -137,15 +130,6 @@
             this.tableDataGridView.Size = new System.Drawing.Size(806, 425);
             this.tableDataGridView.TabIndex = 1;
             // 
-            // fileSystemWatcherMessages
-            // 
-            this.fileSystemWatcherMessages.EnableRaisingEvents = true;
-            this.fileSystemWatcherMessages.Filter = "*.msgdat*";
-            this.fileSystemWatcherMessages.NotifyFilter = System.IO.NotifyFilters.FileName;
-            this.fileSystemWatcherMessages.Path = "C:\\";
-            this.fileSystemWatcherMessages.SynchronizingObject = this;
-            this.fileSystemWatcherMessages.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcherMessages_Created);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -182,6 +166,15 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 75;
             // 
+            // fileSystemWatcherMessages
+            // 
+            this.fileSystemWatcherMessages.EnableRaisingEvents = true;
+            this.fileSystemWatcherMessages.Filter = "*.msgdat*";
+            this.fileSystemWatcherMessages.NotifyFilter = System.IO.NotifyFilters.FileName;
+            this.fileSystemWatcherMessages.Path = "C:\\";
+            this.fileSystemWatcherMessages.SynchronizingObject = this;
+            this.fileSystemWatcherMessages.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcherMessages_Created);
+            // 
             // ServerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,6 +185,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ServerMain";
             this.Text = "Message App Server";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerMain_FormClosing);
             this.Load += new System.EventHandler(this.ServerMain_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -217,7 +211,6 @@
         private messageDbDataSet1TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripLabel labelIP;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.DataGridView tableDataGridView;
         private System.IO.FileSystemWatcher fileSystemWatcherMessages;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

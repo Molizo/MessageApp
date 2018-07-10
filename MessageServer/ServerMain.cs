@@ -10,11 +10,15 @@ namespace MessageServer
 {
     public partial class ServerMain : Form
     {
+        private System.Diagnostics.Process backend = new System.Diagnostics.Process();
+        private System.Diagnostics.ProcessStartInfo backendStartInfo = new System.Diagnostics.ProcessStartInfo();
+
         public ServerMain()
         {
             InitializeComponent();
             fileSystemWatcherMessages.Path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             labelIP.Text = LocalIPAddress().ToString();
+            backendServer();
         }
 
         private void ServerMain_Load(object sender, EventArgs e)
@@ -56,6 +60,25 @@ namespace MessageServer
             }
             this.tableTableAdapter.Fill(this.messageDbDataSet1.Table);
             Properties.Settings.Default.CurrentID++;
+        }
+
+        private void backendServer()
+        {
+            backendStartInfo.FileName = "cmd.exe";
+            backendStartInfo.Arguments = "/C NTserver.exe -ha " + LocalIPAddress().ToString() + " \"" + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\"";
+            backend.StartInfo = backendStartInfo;
+            backend.Start();
+        }
+
+        private void ServerMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/c taskkill /im NTserver.exe /F";
+            process.StartInfo = startInfo;
+            process.Start();
         }
     }
 }
