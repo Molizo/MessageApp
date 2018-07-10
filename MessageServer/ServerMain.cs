@@ -35,7 +35,7 @@ namespace MessageServer
             this.tableTableAdapter.Fill(this.messageDbDataSet1.Table);
         }
 
-        private IPAddress LocalIPAddress()
+        private IPAddress LocalIPAddress() //Gets the IP address of the current PC for use in the backend and for convenience.
         {
             if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
@@ -47,7 +47,7 @@ namespace MessageServer
             return host
                 .AddressList
                 .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
-        }  //Gets the IP address of the current PC for use in the backend and for convenience.
+        }
 
         private void fileSystemWatcherMessages_Created(object sender, FileSystemEventArgs e) //This searches for .msgdat files containing data such as the 'Sender','Receiver','Message',adds it to the master table and redoes the message tables for each user.
         {
@@ -80,15 +80,15 @@ namespace MessageServer
             }
         }
 
-        private void backendServerStart()
+        private void backendServerStart()  //Starts the backend server that listens for outside connections
         {
             backendStartInfo.FileName = "cmd.exe";
             backendStartInfo.Arguments = "/C NTserver.exe -ha " + LocalIPAddress().ToString() + " \"" + System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\"";
             backend.StartInfo = backendStartInfo;
             backend.Start();
-        }  //Starts the backend server that listens for outside connections
+        }
 
-        private void backendServerStop()
+        private void backendServerStop()   //Stops the backend server
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -97,7 +97,7 @@ namespace MessageServer
             startInfo.Arguments = "/c taskkill /im NTserver.exe /F";
             process.StartInfo = startInfo;
             process.Start();
-        }   //Stops the backend server
+        }
 
         private void ServerMain_FormClosing(object sender, FormClosingEventArgs e)  //What to do when the app is closing
         {
@@ -106,16 +106,16 @@ namespace MessageServer
             Properties.Settings.Default.Save();
         }
 
-        private void saveUsers()
+        private void saveUsers() //This saves a list of all users who sent and received messages
         {
             System.IO.File.Delete(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/users.dat");
             users.ForEach(delegate (String user)
             {
                 System.IO.File.AppendAllText(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/users.dat", user + Environment.NewLine);
             });
-        } //This saves a list of all users who sent and received messages
+        }
 
-        private void loadUsers()
+        private void loadUsers() //This loads a list of all users who sent and received messages
         {
             try
             {
@@ -135,9 +135,9 @@ namespace MessageServer
                 Console.WriteLine("Debugging information follows:");
                 Console.WriteLine(e.ToString());
             }
-        } //This loads a list of all users who sent and received messages
+        }
 
-        private void generateUserMessageFiles(string user)
+        private void generateUserMessageFiles(string user)  // This generates the received message list for a user and stores it in the Users folder with the username corresponding to each filename
         {
             string query = "SELECT [Timestamp],[Sender],[Message] FROM [dbo].[Table] WHERE [Receiver]='" + user + "'";
             string filePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "/Users/" + user + ".msgusr";
@@ -156,12 +156,14 @@ namespace MessageServer
             {
                 while (sqlReader.Read())
                 {
-                    file.WriteLine(sqlReader["Timestamp"] + "\t" + sqlReader["Sender"] + "\t" + sqlReader["Message"]);
+                    string message = sqlReader["Message"].ToString().Replace(Environment.NewLine, "\"\\n\"");
+                    file.WriteLine("'" + sqlReader["Timestamp"] + "','" + sqlReader["Sender"] + "','" + message + "'");
+                    //The message column fuss on the row above is so that a new line is replaced by \n and \n by
                 }
             }
 
             sqlReader.Close();
             comm.Connection.Close();
-        }  // This generates the received message list for a user and stores it in the Users folder with the username corresponding to each filename
+        }
     }
 }
