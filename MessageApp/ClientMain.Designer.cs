@@ -97,6 +97,7 @@
             this.Name = "ClientMain";
             this.ShowIcon = false;
             this.Text = "Welcome DUMMYUSER - Messaging Client";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClientMain_FormClosing);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
