@@ -1,6 +1,6 @@
-﻿namespace MessageServer {
-    
-    
-    public partial class messageDbDataSet1 {
+﻿namespace MessageServer
+{
+    public partial class messageDbDataSet1
+    {
     }
 }
