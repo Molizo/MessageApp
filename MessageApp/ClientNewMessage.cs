@@ -20,6 +20,11 @@ namespace MessageApp
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
+            string fileName = "newMessage" + Properties.Settings.Default.lastUsername + random.Next(0, 21999999) + ".msgdat";
+            string message = "'" + Properties.Settings.Default.lastUsername + "','" + textBoxTo.Text + "','" + textBoxMessage.Text + "'";
+            System.IO.File.WriteAllText(fileName, message);
+            this.Close();
         }
     }
 }
