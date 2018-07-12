@@ -10,4 +10,4 @@ Send and receive messages using a client-server arhitecture.
 
 This project uses parts of ftpdmin by Mathhias Wandel.
 
-Licensed under the https://img.shields.io/badge/license-MIT%20License-yellow.svg
+Licensed under the [![MIT License Shield](https://img.shields.io/badge/license-MIT%20License-yellow.svg)](https://github.com/Molizo/MessageApp/blob/master/LICENSE)
