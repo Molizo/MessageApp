@@ -20,12 +20,24 @@ namespace MessageServer
             InitializeComponent();
             fileSystemWatcherMessages.Path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             labelIP.Text = LocalIPAddress().ToString();
+            createUsersFolder();
             backendServerStart();
             loadUsers();
             foreach (string user in users) //Regenerates the message tables for each user
             {
                 generateUserMessageFiles(user);
             }
+        }
+
+        private void createUsersFolder()
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/c mkdir Users";
+            process.StartInfo = startInfo;
+            process.Start();
         }
 
         private void ServerMain_Load(object sender, EventArgs e)

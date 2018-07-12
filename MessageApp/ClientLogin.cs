@@ -11,6 +11,18 @@ namespace MessageApp
             InitializeComponent();
             textBoxIP.Text = Properties.Settings.Default.lastIP;
             textBoxUsername.Text = Properties.Settings.Default.lastUsername;
+            createMessagesFolder();
+        }
+
+        private void createMessagesFolder()
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/c mkdir Messages";
+            process.StartInfo = startInfo;
+            process.Start();
         }
 
         private void buttonConnect_Click(object sender, EventArgs e)
