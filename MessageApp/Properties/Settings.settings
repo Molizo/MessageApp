@@ -11,5 +11,8 @@
     <Setting Name="refreshInterval" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">3000</Value>
     </Setting>
+    <Setting Name="connectionTimeout" Type="System.TimeSpan" Scope="Application">
+      <Value Profile="(Default)">00:30:00</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

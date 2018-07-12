@@ -38,7 +38,8 @@
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonConnect = new System.Windows.Forms.Button();
-            this.labelError = new System.Windows.Forms.Label();
+            this.buttonOpen = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,7 @@
             this.tableLayoutPanel2.Controls.Add(this.textBoxUsername, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.textBoxPassword, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.buttonConnect, 1, 3);
-            this.tableLayoutPanel2.Controls.Add(this.labelError, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.buttonOpen, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 47);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -159,17 +160,21 @@
             this.buttonConnect.UseVisualStyleBackColor = true;
             this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
-            // labelError
+            // buttonOpen
             // 
-            this.labelError.AutoSize = true;
-            this.labelError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelError.ForeColor = System.Drawing.Color.Red;
-            this.labelError.Location = new System.Drawing.Point(3, 93);
-            this.labelError.Name = "labelError";
-            this.labelError.Size = new System.Drawing.Size(63, 17);
-            this.labelError.TabIndex = 7;
-            this.labelError.Text = "ERROR";
-            this.labelError.Visible = false;
+            this.buttonOpen.Location = new System.Drawing.Point(3, 96);
+            this.buttonOpen.Name = "buttonOpen";
+            this.buttonOpen.Size = new System.Drawing.Size(63, 23);
+            this.buttonOpen.TabIndex = 7;
+            this.buttonOpen.Text = "Open File";
+            this.buttonOpen.UseVisualStyleBackColor = true;
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Message Files|*.msgdat|Message User|*.msgusr";
+            this.openFileDialog.Title = "Open message file - Messaging Client";
+            this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
             // ClientLogin
             // 
@@ -205,7 +210,8 @@
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonConnect;
-        private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.Button buttonOpen;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
