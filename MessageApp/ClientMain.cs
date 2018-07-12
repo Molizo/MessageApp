@@ -104,5 +104,18 @@ namespace MessageApp
             refreshMessages();
             Console.WriteLine("Refreshing messages!");
         }
+
+        private void openFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageListViewer messageListViewer = new MessageListViewer();
+            messageListViewer.OpenFile(openFileDialog.FileName);
+            messageListViewer.Show();
+            messageListViewer.Focus();
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            openFileDialog.ShowDialog();
+        }
     }
 }

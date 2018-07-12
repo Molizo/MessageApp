@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.labelIP = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonClearDatabase = new System.Windows.Forms.ToolStripButton();
             this.messageDbDataSet = new MessageServer.messageDbDataSet();
             this.messageDbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.messageDbDataSet1 = new MessageServer.messageDbDataSet1();
@@ -59,7 +62,9 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.labelIP});
+            this.labelIP,
+            this.toolStripSeparator1,
+            this.buttonClearDatabase});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(806, 25);
@@ -77,6 +82,24 @@
             this.labelIP.Name = "labelIP";
             this.labelIP.Size = new System.Drawing.Size(62, 22);
             this.labelIP.Text = "DUMMYIP";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // buttonClearDatabase
+            // 
+            this.buttonClearDatabase.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonClearDatabase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.buttonClearDatabase.Image = ((System.Drawing.Image)(resources.GetObject("buttonClearDatabase.Image")));
+            this.buttonClearDatabase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonClearDatabase.Name = "buttonClearDatabase";
+            this.buttonClearDatabase.Size = new System.Drawing.Size(89, 22);
+            this.buttonClearDatabase.Text = "Clear Database";
+            this.buttonClearDatabase.ToolTipText = "Clears the database of any existing records.\r\nThis action may cause data loss,so " +
+    "please proceed with caution.";
+            this.buttonClearDatabase.Click += new System.EventHandler(this.buttonClearDatabase_Click);
             // 
             // messageDbDataSet
             // 
@@ -217,6 +240,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton buttonClearDatabase;
     }
 }
 

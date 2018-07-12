@@ -126,13 +126,10 @@ namespace MessageServer
                 }
                 userList.Close();
             }
-            catch (Exception e)
+            catch
             {
                 Console.WriteLine("Unable to locate file users.dat");
                 Console.WriteLine("Maybe first start or corrupted");
-                Console.WriteLine();
-                Console.WriteLine("Debugging information follows:");
-                Console.WriteLine(e.ToString());
             }
         }
 
@@ -163,6 +160,28 @@ namespace MessageServer
 
             sqlReader.Close();
             comm.Connection.Close();
+        }
+
+        private void buttonClearDatabase_Click(object sender, EventArgs e)  //This clears the database of any records
+        {
+            var confirmationResult = MessageBox.Show("Are you sure you want to clear the database?", "Confirmation", MessageBoxButtons.YesNo);
+            if (confirmationResult == DialogResult.Yes)
+            {
+                string query = "DELETE FROM [dbo].[Table]";
+                using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.messageDbConnectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+                this.tableTableAdapter.Fill(this.messageDbDataSet1.Table);
+                foreach (string user in users) //Regenerates the message tables for each user
+                {
+                    generateUserMessageFiles(user);
+                }
+            }
         }
     }
 }

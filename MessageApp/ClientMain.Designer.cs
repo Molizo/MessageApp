@@ -35,13 +35,16 @@
             this.labelNewMessageNumber = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonNewMessage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonRefresh = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewMessages = new System.Windows.Forms.DataGridView();
             this.columnTimestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fileSystemWatcherMessages = new System.IO.FileSystemWatcher();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonOpen = new System.Windows.Forms.ToolStripButton();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcherMessages)).BeginInit();
@@ -58,7 +61,9 @@
             this.toolStripSeparator2,
             this.buttonNewMessage,
             this.toolStripSeparator3,
-            this.buttonRefresh});
+            this.buttonRefresh,
+            this.toolStripSeparator4,
+            this.buttonOpen});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
@@ -98,6 +103,11 @@
             this.buttonNewMessage.Text = "Compose";
             this.buttonNewMessage.ToolTipText = "Send a new message";
             this.buttonNewMessage.Click += new System.EventHandler(this.buttonNewMessage_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // buttonRefresh
             // 
@@ -155,15 +165,31 @@
             // fileSystemWatcherMessages
             // 
             this.fileSystemWatcherMessages.EnableRaisingEvents = true;
-            this.fileSystemWatcherMessages.Filter = "*.msgusr*";
-            this.fileSystemWatcherMessages.NotifyFilter = System.IO.NotifyFilters.LastAccess;
+            this.fileSystemWatcherMessages.Filter = "*msg.msgusr*";
             this.fileSystemWatcherMessages.SynchronizingObject = this;
             this.fileSystemWatcherMessages.Changed += new System.IO.FileSystemEventHandler(this.fileSystemWatcherMessages_Changed);
             // 
-            // toolStripSeparator3
+            // toolStripSeparator4
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // buttonOpen
+            // 
+            this.buttonOpen.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.buttonOpen.Image = ((System.Drawing.Image)(resources.GetObject("buttonOpen.Image")));
+            this.buttonOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonOpen.Name = "buttonOpen";
+            this.buttonOpen.Size = new System.Drawing.Size(110, 22);
+            this.buttonOpen.Text = "Open Message File";
+            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "Message Files|*.msgdat|Message User|*.msgusr";
+            this.openFileDialog.Title = "Open message file - Messaging Client";
+            this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
             // ClientMain
             // 
@@ -196,8 +222,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnTimestamp;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSender;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnMessage;
-        private System.IO.FileSystemWatcher fileSystemWatcherMessages;
         private System.Windows.Forms.ToolStripButton buttonRefresh;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.IO.FileSystemWatcher fileSystemWatcherMessages;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton buttonOpen;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

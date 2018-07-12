@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Net.NetworkInformation;
-using System.Text;
+using System.Net.Sockets;
 using System.Windows.Forms;
 
 namespace MessageApp
@@ -27,41 +26,48 @@ namespace MessageApp
                 clientMain.Show();
             }
             else
-                labelError.Visible = true;
+                MessageBox.Show("Cannot connect to server.\nPlease check your connection details.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private static bool IsMachineOnline(string hostName)
+        private bool IsMachineOnline(string host)
         {
-            bool retVal = false;
             try
             {
-                Ping pingSender = new Ping();
-                PingOptions options = new PingOptions();
-                // Use the default Ttl value which is 128,
-                // but change the fragmentation behavior.
-                options.DontFragment = true;
-                // Create a buffer of 32 bytes of data to be transmitted.
-                string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-                byte[] buffer = Encoding.ASCII.GetBytes(data);
-                int timeout = 120;
-
-                PingReply reply = pingSender.Send(hostName, timeout, buffer, options);
-                if (reply.Status == IPStatus.Success)
+                using (var client = new TcpClient())
                 {
-                    retVal = true;
+                    var result = client.BeginConnect(host, 21, null, null);
+                    var success = result.AsyncWaitHandle.WaitOne(Properties.Settings.Default.connectionTimeout);
+                    if (!success)
+                    {
+                        return false;
+                    }
+
+                    client.EndConnect(result);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                retVal = false;
-                Console.WriteLine(ex.Message);
+                return false;
             }
-            return retVal;
+            return true;
         }
 
         private static bool CheckLogin(string username, string password)
         {
             return true;
+        }
+
+        private void buttonOpen_Click(object sender, EventArgs e)
+        {
+            openFileDialog.ShowDialog();
+        }
+
+        private void openFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MessageListViewer messageListViewer = new MessageListViewer();
+            messageListViewer.OpenFile(openFileDialog.FileName);
+            messageListViewer.Show();
+            messageListViewer.Focus();
         }
     }
 }

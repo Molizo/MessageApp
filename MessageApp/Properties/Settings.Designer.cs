@@ -55,5 +55,14 @@ namespace MessageApp.Properties {
                 return ((int)(this["refreshInterval"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:30:00")]
+        public global::System.TimeSpan connectionTimeout {
+            get {
+                return ((global::System.TimeSpan)(this["connectionTimeout"]));
+            }
+        }
     }
 }
