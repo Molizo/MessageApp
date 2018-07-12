@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Windows.Forms;
 using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace MessageApp
 {
@@ -27,6 +25,8 @@ namespace MessageApp
                 clientMain.Closed += (s, args) => this.Close();
                 clientMain.Show();
             }
+            else
+                MessageBox.Show("Cannot connect to server.\nPlease check your connection details.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool IsMachineOnline(string host)

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows.Forms;
-using System.IO;
 
 namespace MessageApp
 {
@@ -34,7 +26,7 @@ namespace MessageApp
                 dataGridViewMessages.Columns.Add("columnMessage", "Message");
             }
             else
-                Console.WriteLine("Message file corrupted!");
+                MessageBox.Show("Error opening the file.", "File operations Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             try
             {
                 System.IO.StreamReader file = new System.IO.StreamReader(fileName);
@@ -52,7 +44,7 @@ namespace MessageApp
             }
             catch
             {
-                Console.WriteLine("Message file corrupted!");
+                MessageBox.Show("Error opening the file.", "File operations Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Focus();
         }

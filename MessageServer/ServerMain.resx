@@ -136,12 +136,6 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="buttonClearDatabase.ToolTipText" xml:space="preserve">
-    <value>Clears the database of any existing records.
-This action may cause data loss,so please proceed with caution as this action does not prompt for confirmation!
-PRESS IF YOU ARE AWARE OF THE CONSEQUENCES!
-</value>
-  </data>
   <metadata name="messageDbDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>
