@@ -164,5 +164,23 @@ namespace MessageServer
             sqlReader.Close();
             comm.Connection.Close();
         }
+
+        private void buttonClearDatabase_Click(object sender, EventArgs e)  //This clears the database of any records
+        {
+            string query = "DELETE FROM [dbo].[Table]";
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.messageDbConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            this.tableTableAdapter.Fill(this.messageDbDataSet1.Table);
+            foreach (string user in users) //Regenerates the message tables for each user
+            {
+                generateUserMessageFiles(user);
+            }
+        }
     }
 }

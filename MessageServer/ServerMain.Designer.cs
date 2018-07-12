@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerMain));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.labelIP = new System.Windows.Forms.ToolStripLabel();
@@ -44,6 +45,9 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fileSystemWatcherMessages = new System.IO.FileSystemWatcher();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.buttonClearDatabase = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.messageDbDataSetBindingSource)).BeginInit();
@@ -59,7 +63,10 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.labelIP});
+            this.labelIP,
+            this.toolStripSeparator1,
+            this.buttonClearDatabase,
+            this.toolStripSeparator2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(806, 25);
@@ -175,6 +182,28 @@
             this.fileSystemWatcherMessages.SynchronizingObject = this;
             this.fileSystemWatcherMessages.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcherMessages_Created);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // buttonClearDatabase
+            // 
+            this.buttonClearDatabase.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonClearDatabase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.buttonClearDatabase.Image = ((System.Drawing.Image)(resources.GetObject("buttonClearDatabase.Image")));
+            this.buttonClearDatabase.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonClearDatabase.Name = "buttonClearDatabase";
+            this.buttonClearDatabase.Size = new System.Drawing.Size(89, 22);
+            this.buttonClearDatabase.Text = "Clear Database";
+            this.buttonClearDatabase.ToolTipText = resources.GetString("buttonClearDatabase.ToolTipText");
+            this.buttonClearDatabase.Click += new System.EventHandler(this.buttonClearDatabase_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // ServerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,6 +246,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton buttonClearDatabase;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }
 
