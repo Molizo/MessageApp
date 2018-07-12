@@ -1,6 +1,6 @@
 # Messaging App
 
-Send messages using a client-server arhitecture.
+Send and receive messages using a client-server arhitecture.
 
 ## Build status
 |Branch|Status|
