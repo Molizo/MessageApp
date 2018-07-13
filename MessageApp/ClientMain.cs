@@ -8,7 +8,7 @@ namespace MessageApp
     {
         private Thread messageCheck = new Thread(new ThreadStart(MessageCheck));
 
-        public ClientMain()
+        public ClientMain() //Initializes stuff
         {
             InitializeComponent();
             Properties.Settings.Default.Reload();
@@ -22,13 +22,13 @@ namespace MessageApp
             refreshMessages();
         }
 
-        private void buttonNewMessage_Click(object sender, EventArgs e)
+        private void buttonNewMessage_Click(object sender, EventArgs e) //Creates a new instance of the message composer
         {
             ClientNewMessage clientNewMessage = new ClientNewMessage();
             clientNewMessage.ShowDialog();
         }
 
-        private static void executeFtpScript()
+        private static void executeFtpScript() //Executes script.dat
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -39,7 +39,7 @@ namespace MessageApp
             process.Start();
         }
 
-        private void cleanupMessagesFolder()
+        private void cleanupMessagesFolder() //Deletes messages in Messages folder at startup
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -50,7 +50,7 @@ namespace MessageApp
             process.Start();
         }
 
-        public static void MessageCheck()
+        public static void MessageCheck() //Checks for new messages every 3000 ms (Defined in Settings.settings as refreshInterval)
         {
             while (true)
             {
@@ -60,12 +60,12 @@ namespace MessageApp
             }
         }
 
-        private void ClientMain_FormClosing(object sender, FormClosingEventArgs e)
+        private void ClientMain_FormClosing(object sender, FormClosingEventArgs e) //Closes working threads at app closing
         {
             messageCheck.Abort();
         }
 
-        private void refreshMessages()
+        private void refreshMessages() //Gets messages saved in msg.msgusr and adds them to dataGridViewMessages
         {
             try
             {
@@ -92,20 +92,20 @@ namespace MessageApp
             }
         }
 
-        private void fileSystemWatcherMessages_Changed(object sender, System.IO.FileSystemEventArgs e)
+        private void fileSystemWatcherMessages_Changed(object sender, System.IO.FileSystemEventArgs e) //Refreshes messages when a new msg.msgusr is downloaded via MessageCheck().
         {
             refreshMessages();
             System.Threading.Thread.Sleep(30);
             Console.WriteLine("Refreshing messages!");
         }
 
-        private void buttonRefresh_Click(object sender, EventArgs e)
+        private void buttonRefresh_Click(object sender, EventArgs e) //Manually refreshes messages
         {
             refreshMessages();
             Console.WriteLine("Refreshing messages!");
         }
 
-        private void openFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        private void openFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e) //Opens message file viewer form
         {
             MessageListViewer messageListViewer = new MessageListViewer();
             messageListViewer.OpenFile(openFileDialog.FileName);
@@ -113,7 +113,7 @@ namespace MessageApp
             messageListViewer.Focus();
         }
 
-        private void buttonOpen_Click(object sender, EventArgs e)
+        private void buttonOpen_Click(object sender, EventArgs e) //Pops up an openFileDialog file selection dialog for selecting a file to be opened in messageListViewer
         {
             openFileDialog.ShowDialog();
         }
