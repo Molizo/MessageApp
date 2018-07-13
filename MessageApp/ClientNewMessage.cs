@@ -5,12 +5,12 @@ namespace MessageApp
 {
     public partial class ClientNewMessage : Form
     {
-        public ClientNewMessage()
+        public ClientNewMessage() //Initializes everything
         {
             InitializeComponent();
         }
 
-        private void buttonSend_Click(object sender, EventArgs e)
+        private void buttonSend_Click(object sender, EventArgs e) //Creates a new newMessageDUMMYUSERNAMERANDOMNUMBER.msgdat and places it in the Messages folder for sending
         {
             Random random = new Random();
             string fileName = "./Messages/newMessage" + Properties.Settings.Default.lastUsername + random.Next(0, 21999999) + ".msgdat";
@@ -21,7 +21,7 @@ namespace MessageApp
             this.Close();
         }
 
-        private void uploadFile(string fileName)
+        private void uploadFile(string fileName) //Uploads message file(specified as a string with the filename of the message) to the server
         {
             System.IO.File.WriteAllText("script.dat", "send " + fileName + "\nquit");
 
