@@ -6,7 +6,7 @@ namespace MessageApp
 {
     public partial class ClientLogin : Form
     {
-        public ClientLogin()
+        public ClientLogin() //Initializers
         {
             InitializeComponent();
             textBoxIP.Text = Properties.Settings.Default.lastIP;
@@ -14,7 +14,7 @@ namespace MessageApp
             createMessagesFolder();
         }
 
-        private void createMessagesFolder()
+        private void createMessagesFolder() //Creates Messages folder in case of first time use
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -25,7 +25,7 @@ namespace MessageApp
             process.Start();
         }
 
-        private void buttonConnect_Click(object sender, EventArgs e)
+        private void buttonConnect_Click(object sender, EventArgs e) //Tries to connect and,if succesful,conects to the server.
         {
             if (IsMachineOnline(textBoxIP.Text) && CheckLogin(textBoxUsername.Text, textBoxPassword.Text))
             {
@@ -41,7 +41,7 @@ namespace MessageApp
                 MessageBox.Show("Cannot connect to server.\nPlease check your connection details.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private bool IsMachineOnline(string host)
+        private bool IsMachineOnline(string host) //Returns true if port 21 is open on the server.
         {
             try
             {
@@ -64,17 +64,17 @@ namespace MessageApp
             return true;
         }
 
-        private static bool CheckLogin(string username, string password)
+        private static bool CheckLogin(string username, string password) //Not Yet Implemented
         {
             return true;
         }
 
-        private void buttonOpen_Click(object sender, EventArgs e)
+        private void buttonOpen_Click(object sender, EventArgs e) //Opens a file selection dialog for the message file viewer
         {
             openFileDialog.ShowDialog();
         }
 
-        private void openFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        private void openFileDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e) //Launches the message file viewer form
         {
             MessageListViewer messageListViewer = new MessageListViewer();
             messageListViewer.OpenFile(openFileDialog.FileName);
